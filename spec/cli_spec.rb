@@ -82,12 +82,17 @@ RSpec.describe "pdfsplit CLI" do
       doc = HexaPDF::Document.new
       3.times { doc.pages.add }
       doc.write(input)
+
       cmd = %(cd "#{dir}" && bundle exec pdfsplit "#{input}" --pages 2)
       _stdout, stderr, status = Open3.capture3(cmd)
 
       expect(status.exitstatus).to eq(0)
       expect(stderr).to eq("")
-      parts = Dir[File.join(dir, "input_part*.pdf")]
+
+      default_out_dir = File.join(dir, "input")
+      expect(Dir.exist?(default_out_dir)).to be(true)
+
+      parts = Dir[File.join(default_out_dir, "input_part*.pdf")]
       expect(parts.size).to eq(2)
     end
   end

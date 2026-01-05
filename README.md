@@ -79,7 +79,7 @@ Outputs will be created in the current directory:
 ### Specify an output directory
 
 ```bash
-pdfsplit input.pdf --pages 10 --out out
+pdfsplit INPUT.pdf --pages 10 --out out
 ```
 
 Files will be created in `out/`.

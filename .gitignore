@@ -6,6 +6,15 @@
 /pkg/
 /spec/reports/
 /tmp/
+*.gem
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.pdf
+Gemfile.lock
 
 # rspec failure tracking
 .rspec_status

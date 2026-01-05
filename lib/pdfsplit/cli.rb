@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "optparse"
+require "fileutils"
 
 module Pdfsplit
   class CLI
@@ -9,7 +10,7 @@ module Pdfsplit
       out_dir = nil
 
       parser = OptionParser.new do |opts|
-        opts.banner = "Usage: pdfsplit .pdf --pages N [--out DIR]"
+        opts.banner = "Usage: pdfsplit INPUT.pdf --pages N [--out DIR]"
 
         opts.on("-h", "--help", "Show help") do
           puts opts
@@ -58,7 +59,12 @@ module Pdfsplit
 
 
       input_path = argv.first
-      out_dir ||="."
+
+      if out_dir.nil?
+        base_dir = File.dirname(input_path)
+        base_name = File.basename(input_path, File.extname(input_path))
+        out_dir   = File.join(base_dir, base_name)
+      end
 
       if File.exist?(out_dir) && !File.directory?(out_dir)
         warn "Error: --out must be a directory"
