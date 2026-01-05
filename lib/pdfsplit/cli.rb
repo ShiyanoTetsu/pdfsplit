@@ -34,7 +34,7 @@ module Pdfsplit
       parser.parse!(argv)
 
       if argv.empty?
-        warn "Error: missing .pdf"
+        warn "Error: missing INPUT.pdf"
         warn parser.to_s
         return 1
       end
