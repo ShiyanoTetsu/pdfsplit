@@ -26,7 +26,6 @@ module Pdfsplit
       end
 
       true
-
     end
   end
 end

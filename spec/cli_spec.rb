@@ -141,7 +141,6 @@ RSpec.describe "pdfsplit CLI" do
       expect(status.exitstatus).to eq(1)
       expect(stderr).to include("Permission denied").or include("permission denied")
     ensure
-
       File.chmod(0o755, out_dir) if File.exist?(out_dir)
     end
   end
@@ -163,6 +162,4 @@ RSpec.describe "pdfsplit CLI" do
       expect(stderr).to include("Error: --out must be a directory")
     end
   end
-
-
 end

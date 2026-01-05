@@ -6,6 +6,6 @@ RSpec.describe Pdfsplit do
   end
 
   it "can load HexaPDF" do
-    expect { require "hexapdf"}.not_to raise_error
+    expect { require "hexapdf" }.not_to raise_error
   end
 end

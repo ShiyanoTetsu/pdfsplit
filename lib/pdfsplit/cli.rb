@@ -35,28 +35,27 @@ module Pdfsplit
 
       if argv.empty?
         warn "Error: missing INPUT.pdf"
-        warn parser.to_s
+        warn parser
         return 1
       end
 
       if argv.size != 1
         warn "Error: only one input .pdf is allowed"
-        warn parser.to_s
+        warn parser
         return 1
       end
 
       if pages.nil?
         warn "Error: missing --pages"
-        warn parser.to_s
+        warn parser
         return 1
       end
 
       if pages <= 0
         warn "Error: --pages must be > 0"
-        warn parser.to_s
+        warn parser
         return 1
       end
-
 
       input_path = argv.first
 
@@ -73,11 +72,9 @@ module Pdfsplit
 
       Pdfsplit::Splitter.split(input_path: input_path, pages_per_part: pages, out_dir: out_dir)
       0
-
-
     rescue OptionParser::ParseError => e
       warn e.message
-      warn parser.to_s
+      warn parser
       1
     rescue HexaPDF::Error
       warn "Error: invalid PDF"
@@ -86,6 +83,5 @@ module Pdfsplit
       warn e.message
       1
     end
-
   end
 end

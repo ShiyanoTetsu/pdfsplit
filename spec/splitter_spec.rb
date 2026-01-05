@@ -23,7 +23,6 @@ RSpec.describe Pdfsplit::Splitter do
       expect(File.exist?(expected1)).to be(true)
       expect(File.exist?(expected2)).to be(true)
 
-
       parts = [expected1, expected2]
       expect(parts.size).to eq(2)
 
@@ -74,9 +73,4 @@ RSpec.describe Pdfsplit::Splitter do
       expect(File.exist?(expected2)).to be(true)
     end
   end
-
-
-
-
-
 end
